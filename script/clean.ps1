@@ -4,11 +4,10 @@ $clean
 $data = foreach($i in $clean){
     $scriptResult = ([PSCustomObject] (Get-RvoFeatureVector $i.FullName)) | ConvertTo-CSV -NoTypeInformation
     # $scriptResult
-    # $scriptResult += "," + $i.Name
+    $scriptResult += "," + $i.Name
     $scriptResult
-    break
 }
-$data | Set-Content cleanHeader.csv
+$data | Set-Content clean.csv
 
 # $scriptResult | Add-Member -MemberType NoteProperty -Name 'fileName' -Value $i.Name
 
